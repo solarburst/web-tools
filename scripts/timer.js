@@ -1,8 +1,11 @@
-// import { Howl } from "./howler.js";
+import { Howl } from "./howler.js";
 
-// const sound = new Howl({
-//   src: ["../assets/notification.mp3"],
-// });
+import myAudioResource from "../assets/notification.mp3";
+const myAudio = new Audio(myAudioResource);
+
+const sound = new Howl({
+  src: ["../assets/notification.mp3"],
+});
 
 const timerInput = document.getElementById("time");
 const buttonStart = document.getElementById("start");
@@ -19,7 +22,8 @@ buttonStart.addEventListener("click", () => {
     let str = `${Math.trunc(hours)}:${Math.trunc(minutes)}:${seconds}`;
     timerShow.innerHTML = str;
     if (time <= 0) {
-      sound.play();
+      myAudio.play();
+      // sound.play();
       timerShow.innerHTML = "Time out";
       clearInterval(countdown);
     }
